@@ -43,7 +43,7 @@ For CLI usage its easier to install globally like so:
 $ npm i -g ping-rx
 
 // starting listening
-$ pingrx
+$ pingrx -h 192.168.1.73
 ```
 
 ## Usage
