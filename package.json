@@ -1,0 +1,99 @@
+{
+  "name": "ping-rx",
+  "version": "0.0.0-development",
+  "description": "",
+  "author": "Patrick Michalina <patrickmichalina@mac.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/patrickmichalina/ping-rx.git"
+  },
+  "bugs": {
+    "url": "https://github.com/patrickmichalina/ping-rx/issues"
+  },
+  "homepage": "https://github.com/patrickmichalina/ping-rx#readme",
+  "keywords": [
+    "ping",
+    "rxjs",
+    "rx",
+    "observable",
+    "typescript",
+    "node"
+  ],
+  "main": "dist/ping-rx-cjs.js",
+  "module": "dist/ping-rx-esm.js",
+  "types": "dist/index.d.ts",
+  "bin": {
+    "pingrx": "dist/pingrx"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "tslint -p tsconfig.json",
+    "rollup": "rollup -c",
+    "cli": "ts-node -P tsconfig.json -O '{\"module\":\"commonjs\"}' ./cli",
+    "cli.run": "ts-node -P tsconfig.json -O '{\"module\":\"commonjs\"}' src/index -h 192.168.1.1"
+  },
+  "dependencies": {
+    "rxjs": "^6.3.3",
+    "typescript-monads": "^3.10.0",
+    "yargs": "^12.0.5"
+  },
+  "devDependencies": {
+    "@types/fs-extra": "^5.0.4",
+    "@types/node": "^10.12.18",
+    "@types/yargs": "^12.0.8",
+    "fs-extra": "^7.0.1",
+    "rollup": "^1.1.2",
+    "rollup-plugin-commonjs": "^9.2.0",
+    "rollup-plugin-typescript2": "^0.19.2",
+    "semantic-release": "^15.13.3",
+    "ts-node": "^8.0.1",
+    "tslint": "^5.12.1",
+    "tslint-immutable": "^5.1.0",
+    "typescript": "^3.2.4"
+  },
+  "release": {
+    "branch": "master",
+    "plugins": [
+      "@semantic-release/npm",
+      "@semantic-release/github",
+      [
+        "@semantic-release/commit-analyzer",
+        {
+          "preset": "angular",
+          "releaseRules": [
+            {
+              "type": "docs",
+              "scope": "README",
+              "release": "patch"
+            },
+            {
+              "type": "refactor",
+              "release": "patch"
+            }
+          ],
+          "parserOpts": {
+            "noteKeywords": [
+              "BREAKING CHANGE",
+              "BREAKING CHANGES",
+              "BREAKING"
+            ]
+          }
+        }
+      ],
+      [
+        "@semantic-release/release-notes-generator",
+        {
+          "preset": "angular",
+          "parserOpts": {
+            "noteKeywords": [
+              "BREAKING CHANGE",
+              "BREAKING CHANGES",
+              "BREAKING"
+            ]
+          }
+        }
+      ]
+    ]
+  }
+}
