@@ -43,8 +43,8 @@ export const pingcli = () => {
 
   pingr.run(args as any).subscribe(res => {
     res.match({
-      fail: a => console.log(1),
-      ok: a => console.log(2)
+      fail: _ => console.log('FAILED'),
+      ok: _ => console.log('OK')
     })
   })
 }
